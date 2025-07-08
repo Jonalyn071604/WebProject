@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Music Playlist</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background-color: #121212;
+      color: white;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #000;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      color: #1db954;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .song-button {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      background-color: #181818;
+      border: none;
+      color: white;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .song-button:hover {
+      background-color: #282828;
+    }
+    .player-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #181818;
+      padding: 20px;
+    }
+    iframe {
+      width: 80%;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+    }
+    .now-playing {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Playlist -->
+  <div class="sidebar">
+    <h2>🎵 Playlist</h2>
+    <button class="song-button" onclick="playYouTube('Worship: I Speak Jesus', 'PcmqSfr1ENY')">
+      Worsip: I Speak Jesus
+    </button>
+    <button class="song-button" onclick="playYouTube('Worship Song 1: What a Beautiful Name', 'nQWFzMvCfLE')">
+      Worship: What a Beautiful Name
+    </button>
+    <button class="song-button" onclick="playYouTube('Worship Song 2: Oceans', 'dy9nwe9_xzw')">
+      Worship: Oceans
+    </button>
+  </div>
+
+  <!-- Player Section -->
+  <div class="player-area">
+    <div class="now-playing" id="nowPlaying">🎧 Select a song to play</div>
+    <iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    function playYouTube(title, videoId) {
+      const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      document.getElementById('youtubePlayer').src = embedUrl;
+      document.getElementById('nowPlaying').textContent = 'Now Playing: ' + title;
+    }
+  </script>
+
+</body>
+</html>
